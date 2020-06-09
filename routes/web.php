@@ -1,5 +1,5 @@
 <?php
-
+use App\DailySpecial as DailySpecial;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -93,7 +93,9 @@ Route::post('/order', 'ShopController@order');
 //static routes
 
 Route::get('/', function () {
-    return view('user/pages/home');
+    $dailySpecials = DailySpecial::all();
+    // dd($dailySpecials);
+    return view('user/pages/home', compact('dailySpecials'));
 })->name('home');
 
 
@@ -117,10 +119,8 @@ Route::get('contacts', function () {
 })->name('contacts');
 
 
-Route::get('reserve', function () {
-    return view('user/pages/reserve');
-})->name('reserve');
-
+Route::get('reserve', 'ReservationController@index')->name('reserve');
+Route::post('makereservation', 'ReservationController@makereservation');
 
 Route::get('shop', 'productsController@foods')->name('shop');
 
