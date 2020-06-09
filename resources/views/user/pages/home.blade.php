@@ -223,15 +223,17 @@ data-responsive_offset="on">
 <div class="dishes-wrapper text--center">
 
 
+@foreach ($dailySpecials as $dailySpecial)
+    <!-- Dish #1 -->
+    <div class="dish-panel">
+    <div class="dish--price">${{$dailySpecial->price}}</div>
+    <h3 class="dish--title">{{$dailySpecial->name}}</h3>
+    <p class="dish--desc">{{$dailySpecial->description}}</p>
+    <div class="divider--shape-12"></div>
+    </div>
+    <!-- .dish end -->
 
-<!-- Dish #1 -->
-<div class="dish-panel">
-<div class="dish--price">$24.95</div>
-<h3 class="dish--title">Chesapeake crab and artichoke dip</h3>
-<p class="dish--desc">Creamy chesapeake crab dip with artichoke, baked and topped with cheddar cheese. served crusty bread for dipping.</p>
-<div class="divider--shape-12"></div>
-</div>
-<!-- .dish end -->
+@endforeach
 
 
 </div>
