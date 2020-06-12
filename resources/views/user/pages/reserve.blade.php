@@ -44,17 +44,17 @@
                     <div class="reservation--dec">
                         You can Book a table online easily in just a couple of minutes. We take reservations for lunch and dinner, just check the availability of your table & book it now!
                     </div>
-                    <form method="post" action="{{asset('user/assets/php/reservation.php')}}" class="reservationForm mb-0">
+                    <form method="post" action="{{url('/makereservation')}}">
+                        {{csrf_field()}}
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="select-branch">
                                     <i class="fa fa-angle-down"></i>
-                                    <select class="form-control" name="res-pepole" id="branch">
-                                            <option value="" disabled selected hidden>Select Branch</option>
-                                           <option>Zindabazar</option>
-                                           <option>Bandar</option>
-                                           <option>Shibganj</option>
-                                           <option>Ambarkhana</option>
+                                    <select class="form-control" name="res-branch" id="branch">
+                                           <option value="" disabled selected hidden>Select Branch</option>
+                                           @foreach ($available_areas as $area)
+                                                <option value="{{$area->id}}">{{$area->name}}</option>
+                                           @endforeach
                                 </select>
                             </div>
 
@@ -75,13 +75,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-4">
                                 <div class="form-select">
                                     <i class="fa fa-angle-down"></i>
-                                    <select class="form-control" name="res-day" id="day">
-									<option value="March 23">March 23, 2017</option>
-									<option value="March 24">March 24, 2017</option>
-									<option value="March 25">March 25, 2017</option>
-									<option value="March 26">March 26, 2017</option>
-									<option value="March 27">March 27, 2017</option>
-								</select>
+                                    <input class="form-control" type="date" name="date">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-4">
@@ -109,7 +103,7 @@
                                 <textarea class="form-control" name="res-message" id="message" rows="2" placeholder="Add a special request (optional)"></textarea>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input type="submit" value="Find Table" name="submit" class="btn btn--secondary btn--block">
+                                <button type="submit" name="submit" class="btn">Find Table</button>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
 												<!--Alert Message-->

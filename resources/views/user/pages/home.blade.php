@@ -221,29 +221,21 @@ data-responsive_offset="on">
 <div class="row">
 <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
 <div class="dishes-wrapper text--center">
-<!-- Dish #1 -->
-<div class="dish-panel">
-<div class="dish--price">$24.95</div>
-<h3 class="dish--title">Chesapeake crab and artichoke dip</h3>
-<p class="dish--desc">Creamy chesapeake crab dip with artichoke, baked and topped with cheddar cheese. served crusty bread for dipping.</p>
-<div class="divider--shape-12"></div>
-</div>
-<!-- .dish end -->
-<!-- Dish #2 -->
-<div class="dish-panel">
-<div class="dish--price">$36.95</div>
-<h3 class="dish--title">Crispy shrimp and grits</h3>
-<p class="dish--desc">Beer battered jumbo shrimp served with crispy cheddar grit polenta, corn and tomato salsa and old bay remoulade.</p>
-<div class="divider--shape-12"></div>
-</div>
-<!-- .dish end -->
-<!-- Dish #3 -->
-<div class="dish-panel">
-<div class="dish--price">$21.95</div>
-<h3 class="dish--title">Thai chicken quesadilla</h3>
-<p class="dish--desc">A chipotle pepper tortilla stuffed with grilled chicken, fresh cilantro, red cabbage, mozzarella with sweet thai chili sauce</p>
-</div>
-<!-- .dish end -->
+
+
+@foreach ($dailySpecials as $dailySpecial)
+    <!-- Dish #1 -->
+    <div class="dish-panel">
+    <div class="dish--price">${{$dailySpecial->price}}</div>
+    <h3 class="dish--title">{{$dailySpecial->name}}</h3>
+    <p class="dish--desc">{{$dailySpecial->description}}</p>
+    <div class="divider--shape-12"></div>
+    </div>
+    <!-- .dish end -->
+
+@endforeach
+
+
 </div>
 <!-- .dishes-wrapper end -->
 </div>
