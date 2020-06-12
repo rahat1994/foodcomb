@@ -12,7 +12,7 @@
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" id="register_form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -61,13 +61,17 @@
                             <label for="phone_number" class="col-md-4 control-label">Phone</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="phone" class="form-control" name="phone_number" value="{{ old('phone_number') }}" required>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">+880</span>
+                                    <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}" maxlength="10" size="10"  required>
 
-                                @if ($errors->has('phone_number'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('phone_number') }}</strong>
-                                    </span>
-                                @endif
+                                    @if ($errors->has('phone_number'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('phone_number') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
                             </div>
                         </div>
 
@@ -95,7 +99,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button id="submit_register_form" class="btn btn-primary">
                                     Register
                                 </button>
                             </div>
@@ -107,3 +111,33 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            
+            $("#submit_register_form").on("click", function(event){
+                event.preventDefault();
+                var formError = [];
+
+                var phoneNumber = $("#register_form #phone_number").val();
+                var phoneNumberRegex = /^\d{10}$/;
+                console.log(phoneNumber);
+                
+                if(phoneNumber.match(phoneNumberRegex)){
+                } else{
+                    formError.push("Please check your phone number");
+                }
+
+                console.log(formError);
+                if (formError.length > 0) {
+                    
+                    formError.map((err) => {
+                        alert(err);
+                    })
+                } else{
+                    $("#register_form").submit();
+                }
+            })
+        });
+    </script>
+@endpush
