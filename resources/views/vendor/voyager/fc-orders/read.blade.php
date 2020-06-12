@@ -34,7 +34,6 @@
 
                 <div class="panel panel-bordered" style="padding-bottom:5px;">
                     <!-- form start -->
-                    
                     <h3> Restaurant: {{$restaurant->name}}</h3>
                     <h3>order Time: {{$dataTypeContent->created_at}}</h3>
                     <ul>
@@ -47,6 +46,9 @@
                     <h3> Restaurant: {{$restaurant->name}}</h3>
                     <h3> Customer Name: {{$order_from->name}}</h3>
                     <h3> Customer Email: {{$order_from->email}}</h3>
+                    <h3> Customer phone number: {{$order_from->phone_number}}</h3>
+                    <h3> Customer address: {{$order_from->address}}</h3>
+
                 </div>
             </div>
         </div>
