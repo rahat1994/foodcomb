@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2020 at 12:59 PM
+-- Generation Time: Jun 12, 2020 at 05:02 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -291,9 +291,10 @@ CREATE TABLE `fc_menu_items` (
 --
 
 INSERT INTO `fc_menu_items` (`id`, `name`, `price`, `quantity_ratio`, `restaurant_id`, `created_at`, `updated_at`, `category_id`, `food_family_id`, `food_type`, `food_image`) VALUES
-(1, 'Brenna Lancaster', 162, '3', 2, '2020-01-12 03:25:14', '2020-01-12 03:25:14', 2, 7, 'Spicy - Mexican - Chicken', NULL),
-(2, 'Kasper Gonzales', 992, '3', 2, '2020-01-14 11:55:55', '2020-01-14 11:55:55', 1, 1, 'Suscipit rem iure ut', NULL),
-(3, 'bath', 20, '1', 2, '2020-01-30 00:29:25', '2020-01-30 00:29:25', 2, 5, 'Spicy - Indian - Salad Included', NULL);
+(1, 'Brenna Lancaster', 162, '3', 2, '2020-01-12 03:25:00', '2020-06-12 07:20:05', 2, 7, 'Spicy - Mexican - Chicken', 'storage/Eagle_nebula_pillars.jpg'),
+(2, 'Kasper Gonzales', 992, '3', 2, '2020-01-14 11:55:00', '2020-06-12 07:19:57', 1, 1, 'Suscipit rem iure ut', 'storage/Eagle_nebula_pillars.jpg'),
+(3, 'bath', 20, '1', 2, '2020-01-30 00:29:00', '2020-06-12 07:19:41', 2, 5, 'Spicy - Indian - Salad Included', 'storage/Eagle_nebula_pillars.jpg'),
+(4, 'Teriyaki', 25, '1', 3, '2020-06-12 07:31:18', '2020-06-12 07:31:18', 3, 1, 'Spicy - Indian - Salad Included', 'storage/Eagle_nebula_pillars.jpg');
 
 -- --------------------------------------------------------
 
@@ -897,7 +898,8 @@ INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified
 (3, 2, 'Forrest Alston', 'rahat3@gmail.com', 'users/default.png', NULL, '$2y$10$fd41coV4XN5e6joWkrNbtuEElhkX05W3S97R/9tQxJOYufi4jBg0W', NULL, NULL, '2020-01-26 19:33:20', '2020-01-26 19:33:20', 'zindabazar,Sylhet', '+8801764562808'),
 (4, 3, 'rahat', 'rahat392@gmail.com', 'users/default.png', NULL, '$2y$10$PTB1hJv6GxxFKDOMf4qrqeO61eqyHFMkY87RtyAznsCMa/ViCVexK', NULL, '{\"locale\":\"en\"}', '2020-01-26 20:39:28', '2020-02-16 07:41:47', 'zindabazar,Sylhet', '+8801764562808'),
 (5, 1, 'rahat', 'rahat362@gmail.com', 'users/default.png', NULL, '$2y$10$THfu93YSTLc7RFdZ1ohVa.wlU1djNP86IkcTMvlR.8cYdX93tN5BC', NULL, '{\"locale\":\"en\"}', '2020-01-27 04:46:06', '2020-01-27 04:52:33', 'zindabazar,Sylhet', '+8801764562808'),
-(6, 2, 'Kamran Khan', 'kamran392@gmail.com', 'users/default.png', NULL, '$2y$10$DrjnxjEHB8mttaAJjJ/p.O.uXwTgaZCQzQfkqlqYONPtpAAENCvEi', NULL, NULL, '2020-06-09 04:07:32', '2020-06-09 04:07:32', 'zindabazar,Sylhet', '+8801764562808');
+(6, 2, 'Kamran Khan', 'kamran392@gmail.com', 'users/default.png', NULL, '$2y$10$DrjnxjEHB8mttaAJjJ/p.O.uXwTgaZCQzQfkqlqYONPtpAAENCvEi', NULL, NULL, '2020-06-09 04:07:32', '2020-06-09 04:07:32', 'zindabazar,Sylhet', '+8801764562808'),
+(7, 2, 'Forrest Alston', 'rahat356@gmail.com', 'users/default.png', NULL, '$2y$10$7mgdIk7.J9LtJ3sLiJ13ouZq93VPn/QdjAD/pKvZzCQxaRIPj8BYS', NULL, NULL, '2020-06-12 00:07:49', '2020-06-12 00:07:50', 'zindabazar,Sylhet', '+8801764562808');
 
 -- --------------------------------------------------------
 
@@ -1119,7 +1121,7 @@ ALTER TABLE `fc_food_families`
 -- AUTO_INCREMENT for table `fc_menu_items`
 --
 ALTER TABLE `fc_menu_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `fc_orders`
@@ -1197,7 +1199,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
