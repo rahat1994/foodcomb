@@ -51,7 +51,7 @@
                         @endforeach
                     </ul>
 
-                    <h3> Subtotal: {{$restaurant->name}}</h3>
+                    <h3> Subtotal: {{$subtotal}}</h3>
                     <h3> Restaurant: {{$restaurant->name}}</h3>
                     <h3> Customer Name: {{$order_from->name}}</h3>
                     <h3> Customer Email: {{$order_from->email}}</h3>
