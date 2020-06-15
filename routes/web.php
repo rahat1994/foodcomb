@@ -105,7 +105,16 @@ Route::get('about', function () {
 
 
 Route::get('menu', function () {
-    return view('user/pages/menu');
+
+    $default_menu = App\FcDefaultMenu::all();
+    $arr = array();
+
+    foreach ($default_menu as $key => $item) {
+        $arr[$item['item_group']][$key] = $item;
+    }
+    // dd($arr);
+    // dd($default_menu);
+    return view('user/pages/menu', compact('arr'));
 })->name('menu');
 
 
