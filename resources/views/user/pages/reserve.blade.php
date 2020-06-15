@@ -260,5 +260,19 @@
     <!-- .container end -->
 </section>
 <!-- #testimonial1 end -->
-
 @endsection
+
+@push("scripts")
+<script type="text/javascript">
+
+@if(isset($new_reservation))
+    $( document ).ready(function() {
+        swal({
+            title: "Reservation made",
+            text: "One of our representative will call you to confirm the reservation.",
+            icon: "success",
+        });
+    })
+@endif
+</script>
+@endpush

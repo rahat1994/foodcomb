@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2020 at 05:02 PM
+-- Generation Time: Jun 15, 2020 at 10:46 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -124,14 +124,14 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (60, 15, 'fc_menu_item_belongsto_fc_food_category_relationship', 'relationship', 'fc_food_category', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\FcFoodCategory\",\"table\":\"fc_food_categories\",\"type\":\"belongsTo\",\"column\":\"category_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13),
 (61, 15, 'food_type', 'text', 'Food Type', 1, 1, 1, 1, 1, 1, '{\"default\":\"Spicy - Indian - Salad Included\"}', 10),
 (62, 18, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(63, 18, 'restaurant_id', 'text', 'Restaurant Id', 1, 1, 1, 1, 1, 1, '{}', 2),
-(64, 18, 'order_body', 'text', 'Order Body', 1, 0, 1, 1, 1, 1, '{}', 4),
-(65, 18, 'order_user_address', 'text', 'Order User Address', 0, 1, 1, 1, 1, 1, '{}', 5),
-(66, 18, 'order_from', 'text', 'Order From', 0, 1, 1, 1, 1, 1, '{}', 3),
-(67, 18, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
-(68, 18, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
-(69, 18, 'customer_name', 'text', 'Customer Name', 0, 0, 1, 1, 1, 1, '{}', 6),
-(70, 18, 'customer_phone', 'text', 'Customer Phone', 0, 0, 1, 1, 1, 1, '{}', 7),
+(63, 18, 'restaurant_id', 'text', 'Restaurant Id', 1, 1, 1, 1, 1, 1, '{}', 6),
+(64, 18, 'order_body', 'text', 'Order Body', 1, 1, 1, 1, 1, 1, '{}', 2),
+(65, 18, 'order_user_address', 'text', 'Order User Address', 0, 0, 1, 1, 1, 1, '{}', 10),
+(66, 18, 'order_from', 'text', 'Order From', 0, 0, 0, 0, 0, 0, '{}', 12),
+(67, 18, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 7),
+(68, 18, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 9),
+(69, 18, 'customer_name', 'text', 'Customer Name', 0, 0, 1, 1, 1, 1, '{}', 8),
+(70, 18, 'customer_phone', 'text', 'Customer Phone', 0, 0, 1, 1, 1, 1, '{}', 11),
 (73, 20, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (74, 20, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '{}', 3),
 (75, 20, 'sitting_capacity', 'text', 'Sitting Capacity', 1, 1, 1, 1, 1, 1, '{}', 4),
@@ -142,7 +142,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (80, 20, 'restaurant_category_id', 'text', 'Restaurant Category Id', 1, 1, 1, 1, 1, 1, '{}', 8),
 (81, 20, 'fc_restaurant_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"user_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
 (82, 15, 'food_image', 'text', 'Food Image', 0, 1, 1, 1, 1, 1, '{}', 11),
-(83, 18, 'fc_order_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"order_from\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
+(83, 18, 'fc_order_belongsto_user_relationship', 'relationship', 'user', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"order_from\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 3),
 (84, 20, 'fc_restaurant_belongsto_fc_area_relationship', 'relationship', 'fc_areas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\FcArea\",\"table\":\"fc_areas\",\"type\":\"belongsTo\",\"column\":\"area_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
 (85, 20, 'fc_restaurant_belongsto_fc_restaurant_category_relationship', 'relationship', 'fc_restaurant_categories', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\FcRestaurantCategory\",\"table\":\"fc_restaurant_categories\",\"type\":\"belongsTo\",\"column\":\"restaurant_category_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 11),
 (86, 21, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
@@ -150,7 +150,27 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (88, 21, 'description', 'text', 'Description', 0, 1, 1, 1, 1, 1, '{}', 3),
 (89, 21, 'price', 'text', 'Price', 0, 1, 1, 1, 1, 1, '{}', 4),
 (90, 21, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
-(91, 21, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6);
+(91, 21, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(92, 22, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(93, 22, 'item_name', 'text', 'Item Name', 1, 1, 1, 1, 1, 1, '{}', 2),
+(94, 22, 'item_price', 'text', 'Item Price', 1, 1, 1, 1, 1, 1, '{}', 3),
+(95, 22, 'item_description', 'text', 'Item Description', 1, 1, 1, 1, 1, 1, '{}', 4),
+(96, 22, 'item_group', 'text', 'Item Group', 1, 1, 1, 1, 1, 1, '{}', 5),
+(97, 22, 'created_at', 'timestamp', 'Created At', 1, 1, 1, 1, 0, 1, '{}', 6),
+(98, 22, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(99, 22, 'item_group_description', 'text', 'Item Group Description', 0, 1, 1, 1, 1, 1, '{}', 8),
+(100, 23, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(101, 23, 'branch', 'text', 'Branch', 0, 1, 1, 1, 1, 1, '{}', 2),
+(102, 23, 'people', 'text', 'People', 0, 1, 1, 1, 1, 1, '{}', 3),
+(103, 23, 'date', 'text', 'Date', 0, 1, 1, 1, 1, 1, '{}', 4),
+(104, 23, 'time', 'text', 'Time', 0, 1, 1, 1, 1, 1, '{}', 5),
+(105, 23, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 6),
+(106, 23, 'email', 'text', 'Email', 0, 1, 1, 1, 1, 1, '{}', 7),
+(107, 23, 'phone', 'text', 'Phone', 0, 1, 1, 1, 1, 1, '{}', 8),
+(108, 23, 'request_text', 'text', 'Request Text', 0, 1, 1, 1, 1, 1, '{}', 9),
+(109, 23, 'reservation_belongsto_fc_area_relationship', 'relationship', 'fc_areas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\area\",\"table\":\"fc_areas\",\"type\":\"belongsTo\",\"column\":\"branch\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"daily_specials\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
+(110, 18, 'fc_order_belongsto_user_relationship_1', 'relationship', 'Address', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"order_from\",\"key\":\"id\",\"label\":\"address\",\"pivot_table\":\"daily_specials\",\"pivot\":\"0\",\"taggable\":\"0\"}', 4),
+(111, 18, 'fc_order_belongsto_fc_restaurant_relationship', 'relationship', 'Restaurant Name', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\restaurant\",\"table\":\"fc_restaurants\",\"type\":\"belongsTo\",\"column\":\"restaurant_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"daily_specials\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5);
 
 -- --------------------------------------------------------
 
@@ -189,9 +209,11 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (12, 'fc_restaurant_categories', 'fc-restaurant-categories', 'Fc Restaurant Category', 'Fc Restaurant Categories', 'voyager-archive', 'App\\FcRestaurantCategory', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2019-12-21 07:12:49', '2019-12-21 07:12:49'),
 (15, 'fc_menu_items', 'fcmenuitems', 'Menu Item', 'Menu Items', 'voyager-book', 'App\\menu_item', NULL, NULL, 'Foods list.', 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2019-12-29 13:59:08', '2020-01-31 19:25:09'),
 (16, 'fc_food_families', 'fc-food-families', 'Food Family', 'Food Families', 'voyager-check-circle', 'App\\food_family', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-01-04 03:34:03', '2020-01-04 03:34:03'),
-(18, 'fc_orders', 'fc-orders', 'Fc Order', 'Fc Orders', 'voyager-file-text', 'App\\FcOrders', NULL, '\\App\\Http\\Controllers\\OrderController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-01-14 16:35:08', '2020-02-02 17:01:25'),
+(18, 'fc_orders', 'fc-orders', 'Fc Order', 'Fc Orders', 'voyager-file-text', 'App\\FcOrders', NULL, '\\App\\Http\\Controllers\\OrderController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-01-14 16:35:08', '2020-06-15 02:35:55'),
 (20, 'fc_restaurants', 'fc-restaurants', 'Restaurant', 'Restaurants', 'voyager-company', 'App\\restaurant', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-01-31 19:18:30', '2020-02-03 11:47:27'),
-(21, 'daily_specials', 'daily-specials', 'Daily Special', 'Daily Specials', 'voyager-medal-rank-star', 'App\\DailySpecial', NULL, NULL, 'daily specials of the website', 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null}', '2020-06-09 04:32:17', '2020-06-09 04:32:17');
+(21, 'daily_specials', 'daily-specials', 'Daily Special', 'Daily Specials', 'voyager-medal-rank-star', 'App\\DailySpecial', NULL, NULL, 'daily specials of the website', 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null}', '2020-06-09 04:32:17', '2020-06-09 04:32:17'),
+(22, 'fc_default_menu', 'fc-default-menu', 'Fc Default Menu', 'Fc Default Menus', 'voyager-boat', 'App\\FcDefaultMenu', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-06-14 23:54:11', '2020-06-15 00:19:18'),
+(23, 'reservations', 'reservations', 'Reservation', 'Reservations', 'voyager-ticket', 'App\\Reservation', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-06-15 02:19:52', '2020-06-15 02:21:54');
 
 -- --------------------------------------------------------
 
@@ -213,6 +235,33 @@ CREATE TABLE `fc_areas` (
 INSERT INTO `fc_areas` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'Zinda bazar', '2019-12-22 03:06:01', '2019-12-22 03:06:01'),
 (2, 'Nayasarak', '2019-12-22 03:13:41', '2019-12-22 03:13:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fc_default_menu`
+--
+
+CREATE TABLE `fc_default_menu` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `item_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `item_price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `item_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `item_group` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `item_group_description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'Starts at 11:00 am',
+  `item_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'hello.jpg'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `fc_default_menu`
+--
+
+INSERT INTO `fc_default_menu` (`id`, `item_name`, `item_price`, `item_description`, `item_group`, `created_at`, `updated_at`, `item_group_description`, `item_image`) VALUES
+(2, 'Pan of Fried Eggs', '12.95', 'eggs, bacon and cherry-tomatoes with bread.', 'BreakFast', '2020-06-15 06:41:41', '2020-06-15 00:17:01', 'Starts at 11:00 am', 'hello.jpg'),
+(3, 'Healthy Breakfast', '19.95', 'Oat granola with fresh blueberries, almond, yogurt', 'BreakFast', '2020-06-15 06:41:58', '2020-06-15 00:17:55', 'Starts at 11:00 am', 'hello.jpg'),
+(4, 'Grilled Fillet', '12.95', 'eggs, bacon and cherry-tomatoes with bread.', 'Lunch', '2020-06-15 06:41:44', '2020-06-15 00:20:18', 'Starts at 2:00 pm', 'hello.jpg');
 
 -- --------------------------------------------------------
 
@@ -439,7 +488,9 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (23, 1, 'Menu Item (Restaurant Owner)', 'owner/menu_item_owner', '_blank', 'voyager-book-download', '#000000', NULL, 13, '2020-01-05 15:50:03', '2020-01-05 15:54:32', NULL, ''),
 (24, 1, 'Fc Orders', '', '_self', NULL, NULL, NULL, 14, '2020-01-14 16:35:08', '2020-01-14 16:35:08', 'voyager.fc-orders.index', NULL),
 (25, 1, 'Restaurants', '', '_self', 'voyager-company', NULL, NULL, 15, '2020-01-31 19:18:30', '2020-01-31 19:18:30', 'voyager.fc-restaurants.index', NULL),
-(26, 1, 'Daily Specials', '', '_self', 'voyager-medal-rank-star', NULL, NULL, 16, '2020-06-09 04:32:17', '2020-06-09 04:32:17', 'voyager.daily-specials.index', NULL);
+(26, 1, 'Daily Specials', '', '_self', 'voyager-medal-rank-star', NULL, NULL, 16, '2020-06-09 04:32:17', '2020-06-09 04:32:17', 'voyager.daily-specials.index', NULL),
+(27, 1, 'Fc Default Menus', '', '_self', 'voyager-boat', NULL, NULL, 17, '2020-06-14 23:54:11', '2020-06-14 23:54:11', 'voyager.fc-default-menu.index', NULL),
+(28, 1, 'Reservations', '', '_self', 'voyager-ticket', NULL, NULL, 18, '2020-06-15 02:19:52', '2020-06-15 02:19:52', 'voyager.reservations.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -591,7 +642,17 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (83, 'read_daily_specials', 'daily_specials', '2020-06-09 04:32:17', '2020-06-09 04:32:17'),
 (84, 'edit_daily_specials', 'daily_specials', '2020-06-09 04:32:17', '2020-06-09 04:32:17'),
 (85, 'add_daily_specials', 'daily_specials', '2020-06-09 04:32:17', '2020-06-09 04:32:17'),
-(86, 'delete_daily_specials', 'daily_specials', '2020-06-09 04:32:17', '2020-06-09 04:32:17');
+(86, 'delete_daily_specials', 'daily_specials', '2020-06-09 04:32:17', '2020-06-09 04:32:17'),
+(87, 'browse_fc_default_menu', 'fc_default_menu', '2020-06-14 23:54:11', '2020-06-14 23:54:11'),
+(88, 'read_fc_default_menu', 'fc_default_menu', '2020-06-14 23:54:11', '2020-06-14 23:54:11'),
+(89, 'edit_fc_default_menu', 'fc_default_menu', '2020-06-14 23:54:11', '2020-06-14 23:54:11'),
+(90, 'add_fc_default_menu', 'fc_default_menu', '2020-06-14 23:54:11', '2020-06-14 23:54:11'),
+(91, 'delete_fc_default_menu', 'fc_default_menu', '2020-06-14 23:54:11', '2020-06-14 23:54:11'),
+(92, 'browse_reservations', 'reservations', '2020-06-15 02:19:52', '2020-06-15 02:19:52'),
+(93, 'read_reservations', 'reservations', '2020-06-15 02:19:52', '2020-06-15 02:19:52'),
+(94, 'edit_reservations', 'reservations', '2020-06-15 02:19:52', '2020-06-15 02:19:52'),
+(95, 'add_reservations', 'reservations', '2020-06-15 02:19:52', '2020-06-15 02:19:52'),
+(96, 'delete_reservations', 'reservations', '2020-06-15 02:19:52', '2020-06-15 02:19:52');
 
 -- --------------------------------------------------------
 
@@ -696,7 +757,17 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (83, 1),
 (84, 1),
 (85, 1),
-(86, 1);
+(86, 1),
+(87, 1),
+(88, 1),
+(89, 1),
+(90, 1),
+(91, 1),
+(92, 1),
+(93, 1),
+(94, 1),
+(95, 1),
+(96, 1);
 
 -- --------------------------------------------------------
 
@@ -755,7 +826,9 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`id`, `branch`, `people`, `date`, `time`, `name`, `email`, `phone`, `request_text`) VALUES
-(1, 1, 5, '2020-06-24', '10:00', 'Rahat', 'rahat@ggmail.com', '01637765144', 'This is a request message');
+(1, 1, 5, '2020-06-24', '10:00', 'Rahat', 'rahat@ggmail.com', '01637765144', 'This is a request message'),
+(2, 2, 4, '2020-06-25', '10:00', 'Forrest Alston', 'noxyvocib@mailinator.net', '+573922102496', 'fsdgashbahadf'),
+(3, 2, 4, '2020-06-25', '10:00', 'Forrest Alston', 'noxyvocib@mailinator.net', '+573922102496', 'fsdgashbahadf');
 
 -- --------------------------------------------------------
 
@@ -944,6 +1017,12 @@ ALTER TABLE `fc_areas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `fc_default_menu`
+--
+ALTER TABLE `fc_default_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `fc_food_categories`
 --
 ALTER TABLE `fc_food_categories`
@@ -1091,19 +1170,25 @@ ALTER TABLE `daily_specials`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `fc_areas`
 --
 ALTER TABLE `fc_areas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `fc_default_menu`
+--
+ALTER TABLE `fc_default_menu`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `fc_food_categories`
@@ -1151,7 +1236,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1163,7 +1248,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -1175,7 +1260,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `roles`

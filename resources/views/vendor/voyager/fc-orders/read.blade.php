@@ -36,13 +36,22 @@
                     <!-- form start -->
                     <h3> Restaurant: {{$restaurant->name}}</h3>
                     <h3>order Time: {{$dataTypeContent->created_at}}</h3>
+                    <?php
+                        $subtotal = 0;
+                    ?>
                     <ul>
                         @foreach($order_body as $order)
                             <li>Item: {{$order['food_name']}}</li>
                             <li>Quantity: {{$order['quantity']}}</li>
+                            <li>Unit Price: {{$order['food_price']}}</li>
+
+                            <?php
+                                $subtotal += ($order['quantity'] * $order['food_price'])
+                            ?>
                         @endforeach
                     </ul>
 
+                    <h3> Subtotal: {{$restaurant->name}}</h3>
                     <h3> Restaurant: {{$restaurant->name}}</h3>
                     <h3> Customer Name: {{$order_from->name}}</h3>
                     <h3> Customer Email: {{$order_from->email}}</h3>

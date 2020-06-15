@@ -254,7 +254,7 @@
             
         });
         
-        if(available_restaurants ===0){
+        if(available_restaurants === 0){
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',

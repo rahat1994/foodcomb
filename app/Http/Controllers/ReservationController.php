@@ -27,9 +27,10 @@ class ReservationController extends Controller
         $new_reservation->request_text = $request['res-message'];
 
         $new_reservation->save();
-
-
-        dd($new_reservation);
+        $available_areas = Area::all();
+        // dd($new_reservation);
+        return view('user/pages/reserve', compact('new_reservation','available_areas'));
+        // dd($new_reservation);
 
     }
 }

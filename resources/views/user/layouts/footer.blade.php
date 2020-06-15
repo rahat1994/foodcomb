@@ -26,7 +26,7 @@
 <li>Thursday <span>08:00am – 03.00pm</span></li>
 <li>Friday <span>Day off</span></li>
 </ul>
-<a class="btn btn--primary btn--bordered btn--block" data-toggle="modal" data-target="#reservationPopup">Find A Table</a>
+<a class="btn btn--primary btn--bordered btn--block"  href="{{route('reserve')}}">Find A Table</a>
 </div>
 <div class="divider--shape-10down"></div>
 </div>
@@ -103,6 +103,8 @@
 <script src="{{asset('user/assets/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
 <script src="{{asset('user/assets/revolution/js/extensions/revolution.extension.migration.min.js')}}"></script>
 <script src="{{asset('user/assets/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
 <!-- RS Configration JS Files -->
 <script src="{{asset('user/assets/js/rsconfig.js')}}"></script>
 
@@ -111,7 +113,7 @@ $( document ).ready(function() {
 
 });
 </script>
-
+@stack('scripts')
 @section('footer')
 
 @show
