@@ -44,7 +44,7 @@
                     <div class="reservation--dec">
                         You can Book a table online easily in just a couple of minutes. We take reservations for lunch and dinner, just check the availability of your table & book it now!
                     </div>
-                    <form method="post" action="{{url('/makereservation')}}">
+                    <form method="post" action="{{url('/makereservation')}}" id="reserve_form">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -97,13 +97,19 @@
                                 <input type="email" class="form-control" name="res-email" id="email" placeholder="Email">
                             </div>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="contact-phone" id="phone" placeholder="Phone Number" required>
+                                <input type="text" class="form-control" name="contact-phone" id="phone_number" placeholder="Phone Number" required>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <textarea class="form-control" name="res-message" id="message" rows="2" placeholder="Add a special request (optional)"></textarea>
                             </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12" style="display:none">
+                                <button type="submit" id="submit_reserve_form_hidden" name="submit" class="btn">Find Table</button>
+                            </div>
+
+
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <button type="submit" name="submit" class="btn">Find Table</button>
+                                <button id="submit_reserve_form" name="submit" class="btn">Find Table</button>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
 												<!--Alert Message-->
@@ -275,4 +281,33 @@
     })
 @endif
 </script>
+
+<script type="text/javascript">
+        $( document ).ready(function() {
+            
+            $("#submit_reserve_form").on("click", function(event){
+                event.preventDefault();
+                var formError = [];
+
+                var phoneNumber = $("#reserve_form #phone_number").val();
+                var phoneNumberRegex = /^\d{11}$/;
+                console.log(phoneNumber);
+                
+                if(phoneNumber.match(phoneNumberRegex)){
+                } else{
+                    formError.push("Please check your phone number");
+                }
+
+                console.log(formError);
+                if (formError.length > 0) {
+                    
+                    formError.map((err) => {
+                        alert(err);
+                    })
+                } else{
+                    $("#submit_reserve_form_hidden").trigger('click');
+                }
+            })
+        });
+    </script>
 @endpush

@@ -123,9 +123,8 @@ Route::get('guest', function () {
 })->name('guest');
 
 
-Route::get('contacts', function () {
-    return view('user/pages/contacts');
-})->name('contacts');
+Route::get('contacts', 'ContactController@index')->name('contacts');
+Route::post('contactSubmit', 'ContactController@save');
 
 
 Route::get('reserve', 'ReservationController@index')->name('reserve');

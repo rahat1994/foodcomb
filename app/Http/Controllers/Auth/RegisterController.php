@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App\Mail\registerEmail;
 class RegisterController extends Controller
 {
     /*
@@ -68,5 +68,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        dd("Hello");    
+        $data = ['message' => 'This is a test!'];
+        Mail::to('rahat392@gmail.com')->send(new registerEmail($data));
     }
 }

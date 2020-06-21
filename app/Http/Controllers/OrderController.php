@@ -26,6 +26,7 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
 
     public function index(Request $request)
     {
+        // dd("Hello");
         // GET THE SLUG, ex. 'posts', 'pages', etc.
         $slug = $this->getSlug($request);
 

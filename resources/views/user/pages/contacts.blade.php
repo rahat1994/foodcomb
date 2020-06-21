@@ -97,25 +97,31 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-6">
                             <div class="contact-form">
-                                <form method="post" action="{{asset('user/assets/php/contact.php')}}" class="contactForm mb-0">
+                                <form method="post" action="{{url('/contactSubmit')}}" id="contact_form_contact">
+                                    {{csrf_field()}}
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control" name="contact-name" id="name" placeholder="First Name:" required>
+                                            <input type="text" class="form-control" name="f_name" id="name" placeholder="First Name:" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control" name="contact-last" id="last" placeholder="Last Name" required>
+                                            <input type="text" class="form-control" name="l_name" id="last" placeholder="Last Name" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="email" class="form-control" name="contact-email" id="email" placeholder="Email:" required>
+                                            <input type="email" class="form-control" name="e_mail" id="email" placeholder="Email:" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control" name="contact-phone" id="phone" placeholder="Phone:" required>
+                                            <input type="text" class="form-control" name="phone" id="phone_number" placeholder="Phone:" maxlength="11" size="11" required>
                                         </div>
                                         <div class="col-md-12">
-                                            <textarea class="form-control" name="contact-message" id="message" rows="2" placeholder="Message" required></textarea>
+                                            <textarea class="form-control" name="message" id="message" rows="2" placeholder="Message" required></textarea>
                                         </div>
+
+                                        <div class="col-md-12" style="display:none">
+                                            <input value="Send Message" type="submit" id="submit_contact_form_hidden" name="submit" class="btn btn--secondary btn--block mt-10">
+                                        </div>
+
                                         <div class="col-md-12">
-                                            <input type="submit" value="Send Message" name="submit" class="btn btn--secondary btn--block mt-10">
+                                            <input value="Send Message" id="submit_contact_form" name="submit" class="btn btn--secondary btn--block mt-10">
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
 												<!--Alert Message-->
@@ -139,3 +145,48 @@
 <!-- #contact1 end -->
 
 @endsection
+
+@push('scripts')
+
+
+    <script type="text/javascript">
+        @if(isset($newContact))
+            $( document ).ready(function() {
+                swal({
+                    title: "Message sent",
+                    text: "One of our representative will call you",
+                    icon: "success",
+                });
+            })
+        @endif
+        
+        $( document ).ready(function() {
+            
+            $("#submit_contact_form").on("click", function(event){
+                event.preventDefault();
+                var formError = [];
+
+                var phoneNumber = $("#contact_form_contact #phone_number").val();
+                var phoneNumberRegex = /^\d{11}$/;
+                console.log(phoneNumber);
+                
+                if(phoneNumber.match(phoneNumberRegex)){
+                } else{
+                    formError.push("Please check your phone number");
+                }
+
+                console.log(formError);
+                if (formError.length > 0) {
+                    
+                    formError.map((err) => {
+                        alert(err);
+                    })
+                } else{
+                    console.log("HEllo");
+                    
+                    $("#submit_contact_form_hidden").trigger( "click" );
+                }
+            })
+        });
+    </script>
+@endpush
