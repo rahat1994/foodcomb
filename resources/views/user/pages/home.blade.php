@@ -252,7 +252,7 @@ data-responsive_offset="on">
 
 <!-- Menu Mixed Grid
 ============================================= -->
-<section id="menuMixedGrid" class="bg-white">
+<section id="menuMixedGrid" class="bg-white" style="display:none">
 <div class="container">
 <div class="row clearfix">
 <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
@@ -290,7 +290,7 @@ data-responsive_offset="on">
 <img src="{{asset('user/assets/images/background/9.jpg')}}" alt="bg">
 </div>
 </div>
-<div class="container">
+<div class="container" style="display: none">
 <div class="row">
 <div class="dishes-wrapper">
 <!-- Dish #1 -->

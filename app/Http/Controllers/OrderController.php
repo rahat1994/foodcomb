@@ -16,6 +16,7 @@ use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
 use Auth;
 use App\User as User;
 use App\restaurant as Restaurant;
+use App\FcOrders as FcOrder;
 class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController {
     /**
      * Display a listing of the resource.
@@ -28,6 +29,9 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
     {
         // dd("Hello");
         // GET THE SLUG, ex. 'posts', 'pages', etc.
+        $all_order = FcOrder::all();
+
+        // return view('user/pages/contacts', compact('all_order'));
         $slug = $this->getSlug($request);
 
         // GET THE DataType based on the slug
