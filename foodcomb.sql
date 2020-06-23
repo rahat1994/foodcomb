@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2020 at 10:46 AM
+-- Generation Time: Jun 22, 2020 at 07:46 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -21,6 +21,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `foodcomb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `f_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `l_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `e_mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `f_name`, `l_name`, `e_mail`, `phone`, `created_at`, `updated_at`, `message`) VALUES
+(1, 'Forrest', 'Alston', 'noxyvocib@mailinator.net', '+573922102496', '2020-06-21 10:58:12', '2020-06-21 10:58:12', NULL),
+(2, 'Forrest', 'Alston', 'noxyvocib@mailinator.net', '+573922102496', '2020-06-21 11:07:47', '2020-06-21 11:07:47', 'bdfdndn'),
+(3, 'Forrest', 'Alston', 'noxyvocib@mailinator.net', '01637765144', '2020-06-21 11:23:09', '2020-06-21 11:23:09', 'gsdgfdhsd'),
+(4, 'Forrest', 'Alston', 'noxyvocib@mailinator.net', '01637765144', '2020-06-21 11:32:46', '2020-06-21 11:32:46', 'gsdgashasdf'),
+(5, 'Forrest', 'Alston', 'noxyvocib@mailinator.net', '01637765144', '2020-06-21 12:10:00', '2020-06-21 12:10:00', 'gasdhgahafa');
 
 -- --------------------------------------------------------
 
@@ -170,7 +198,15 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (108, 23, 'request_text', 'text', 'Request Text', 0, 1, 1, 1, 1, 1, '{}', 9),
 (109, 23, 'reservation_belongsto_fc_area_relationship', 'relationship', 'fc_areas', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\area\",\"table\":\"fc_areas\",\"type\":\"belongsTo\",\"column\":\"branch\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"daily_specials\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
 (110, 18, 'fc_order_belongsto_user_relationship_1', 'relationship', 'Address', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"order_from\",\"key\":\"id\",\"label\":\"address\",\"pivot_table\":\"daily_specials\",\"pivot\":\"0\",\"taggable\":\"0\"}', 4),
-(111, 18, 'fc_order_belongsto_fc_restaurant_relationship', 'relationship', 'Restaurant Name', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\restaurant\",\"table\":\"fc_restaurants\",\"type\":\"belongsTo\",\"column\":\"restaurant_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"daily_specials\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5);
+(111, 18, 'fc_order_belongsto_fc_restaurant_relationship', 'relationship', 'Restaurant Name', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\restaurant\",\"table\":\"fc_restaurants\",\"type\":\"belongsTo\",\"column\":\"restaurant_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"daily_specials\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5),
+(112, 24, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(113, 24, 'f_name', 'text', 'F Name', 1, 1, 1, 1, 1, 1, '{}', 2),
+(114, 24, 'l_name', 'text', 'L Name', 1, 1, 1, 1, 1, 1, '{}', 3),
+(115, 24, 'e_mail', 'text', 'E Mail', 1, 1, 1, 1, 1, 1, '{}', 4),
+(116, 24, 'phone', 'text', 'Phone', 1, 1, 1, 1, 1, 1, '{}', 5),
+(117, 24, 'created_at', 'timestamp', 'Created At', 1, 1, 1, 1, 0, 1, '{}', 6),
+(118, 24, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(119, 24, 'message', 'text', 'Message', 0, 1, 1, 1, 1, 1, '{}', 8);
 
 -- --------------------------------------------------------
 
@@ -213,7 +249,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (20, 'fc_restaurants', 'fc-restaurants', 'Restaurant', 'Restaurants', 'voyager-company', 'App\\restaurant', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-01-31 19:18:30', '2020-02-03 11:47:27'),
 (21, 'daily_specials', 'daily-specials', 'Daily Special', 'Daily Specials', 'voyager-medal-rank-star', 'App\\DailySpecial', NULL, NULL, 'daily specials of the website', 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null}', '2020-06-09 04:32:17', '2020-06-09 04:32:17'),
 (22, 'fc_default_menu', 'fc-default-menu', 'Fc Default Menu', 'Fc Default Menus', 'voyager-boat', 'App\\FcDefaultMenu', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-06-14 23:54:11', '2020-06-15 00:19:18'),
-(23, 'reservations', 'reservations', 'Reservation', 'Reservations', 'voyager-ticket', 'App\\Reservation', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-06-15 02:19:52', '2020-06-15 02:21:54');
+(23, 'reservations', 'reservations', 'Reservation', 'Reservations', 'voyager-ticket', 'App\\Reservation', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-06-15 02:19:52', '2020-06-15 02:21:54'),
+(24, 'contacts', 'contacts', 'Contact', 'Contacts', NULL, 'App\\Contact', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-06-21 10:41:18', '2020-06-21 11:05:05');
 
 -- --------------------------------------------------------
 
@@ -368,7 +405,6 @@ CREATE TABLE `fc_orders` (
 --
 
 INSERT INTO `fc_orders` (`id`, `restaurant_id`, `order_body`, `order_user_address`, `order_from`, `customer_name`, `customer_phone`, `created_at`, `updated_at`) VALUES
-(6, 2, '{\"1\":{\"food_id\":\"1\",\"food_name\":\"Brenna Lancaster\",\"food_price\":\"162\",\"quantity\":\"1\"},\"2\":{\"food_id\":\"2\",\"food_name\":\"Kasper Gonzales\",\"food_price\":\"992\",\"quantity\":\"1\"}}', NULL, 1, NULL, NULL, '2020-01-28 06:42:43', '2020-01-28 06:42:43'),
 (7, 2, '{\"1\":{\"food_id\":\"1\",\"food_name\":\"Brenna Lancaster\",\"food_price\":\"162\",\"quantity\":\"1\"},\"2\":{\"food_id\":\"2\",\"food_name\":\"Kasper Gonzales\",\"food_price\":\"992\",\"quantity\":\"1\"}}', NULL, 1, NULL, NULL, '2020-01-28 06:43:07', '2020-01-28 06:43:07'),
 (8, 2, '{\"1\":{\"food_id\":\"1\",\"food_name\":\"Brenna Lancaster\",\"food_price\":\"162\",\"quantity\":\"1\"},\"2\":{\"food_id\":\"2\",\"food_name\":\"Kasper Gonzales\",\"food_price\":\"992\",\"quantity\":\"3\"}}', NULL, 1, NULL, NULL, '2020-01-28 19:08:44', '2020-01-28 19:08:44'),
 (9, 2, '{\"2\":{\"food_id\":\"2\",\"food_name\":\"Kasper Gonzales\",\"food_price\":\"992\",\"quantity\":\"1\"}}', NULL, 1, NULL, NULL, '2020-01-30 00:21:59', '2020-01-30 00:21:59'),
@@ -490,7 +526,8 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (25, 1, 'Restaurants', '', '_self', 'voyager-company', NULL, NULL, 15, '2020-01-31 19:18:30', '2020-01-31 19:18:30', 'voyager.fc-restaurants.index', NULL),
 (26, 1, 'Daily Specials', '', '_self', 'voyager-medal-rank-star', NULL, NULL, 16, '2020-06-09 04:32:17', '2020-06-09 04:32:17', 'voyager.daily-specials.index', NULL),
 (27, 1, 'Fc Default Menus', '', '_self', 'voyager-boat', NULL, NULL, 17, '2020-06-14 23:54:11', '2020-06-14 23:54:11', 'voyager.fc-default-menu.index', NULL),
-(28, 1, 'Reservations', '', '_self', 'voyager-ticket', NULL, NULL, 18, '2020-06-15 02:19:52', '2020-06-15 02:19:52', 'voyager.reservations.index', NULL);
+(28, 1, 'Reservations', '', '_self', 'voyager-ticket', NULL, NULL, 18, '2020-06-15 02:19:52', '2020-06-15 02:19:52', 'voyager.reservations.index', NULL),
+(29, 1, 'Contacts', '', '_self', NULL, NULL, NULL, 19, '2020-06-21 10:41:18', '2020-06-21 10:41:18', 'voyager.contacts.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -652,7 +689,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (93, 'read_reservations', 'reservations', '2020-06-15 02:19:52', '2020-06-15 02:19:52'),
 (94, 'edit_reservations', 'reservations', '2020-06-15 02:19:52', '2020-06-15 02:19:52'),
 (95, 'add_reservations', 'reservations', '2020-06-15 02:19:52', '2020-06-15 02:19:52'),
-(96, 'delete_reservations', 'reservations', '2020-06-15 02:19:52', '2020-06-15 02:19:52');
+(96, 'delete_reservations', 'reservations', '2020-06-15 02:19:52', '2020-06-15 02:19:52'),
+(97, 'browse_contacts', 'contacts', '2020-06-21 10:41:18', '2020-06-21 10:41:18'),
+(98, 'read_contacts', 'contacts', '2020-06-21 10:41:18', '2020-06-21 10:41:18'),
+(99, 'edit_contacts', 'contacts', '2020-06-21 10:41:18', '2020-06-21 10:41:18'),
+(100, 'add_contacts', 'contacts', '2020-06-21 10:41:18', '2020-06-21 10:41:18'),
+(101, 'delete_contacts', 'contacts', '2020-06-21 10:41:18', '2020-06-21 10:41:18');
 
 -- --------------------------------------------------------
 
@@ -767,7 +809,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (93, 1),
 (94, 1),
 (95, 1),
-(96, 1);
+(96, 1),
+(97, 1),
+(98, 1),
+(99, 1),
+(100, 1),
+(101, 1);
 
 -- --------------------------------------------------------
 
@@ -828,7 +875,8 @@ CREATE TABLE `reservations` (
 INSERT INTO `reservations` (`id`, `branch`, `people`, `date`, `time`, `name`, `email`, `phone`, `request_text`) VALUES
 (1, 1, 5, '2020-06-24', '10:00', 'Rahat', 'rahat@ggmail.com', '01637765144', 'This is a request message'),
 (2, 2, 4, '2020-06-25', '10:00', 'Forrest Alston', 'noxyvocib@mailinator.net', '+573922102496', 'fsdgashbahadf'),
-(3, 2, 4, '2020-06-25', '10:00', 'Forrest Alston', 'noxyvocib@mailinator.net', '+573922102496', 'fsdgashbahadf');
+(3, 2, 4, '2020-06-25', '10:00', 'Forrest Alston', 'noxyvocib@mailinator.net', '+573922102496', 'fsdgashbahadf'),
+(4, 1, 3, '2020-06-24', '10:00', 'Forrest Alston', 'noxyvocib@mailinator.net', '01637765144', 'wgwgwhwrhtehatahtash');
 
 -- --------------------------------------------------------
 
@@ -969,10 +1017,18 @@ INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified
 (1, 1, 'Kamran', 'kamran@gmail.com', 'users/default.png', NULL, '$2y$10$FjVabEtllFT7y7lh0i0RtepK7KXRhq.OSS8jp2lNbWHSKmzO56CJi', NULL, NULL, '2019-12-20 15:10:14', '2019-12-20 15:10:14', 'zindabazar,Sylhet', '+8801764562808'),
 (2, 2, 'Calista Branch', 'legica@mailinator.com', 'users\\December2019\\lKXdEpOGSsr6MPZ9JcP6.png', NULL, '$2y$10$ES/0YWhCsFq/oqbUfiRCZOk7GrLkPE3vtcpQ/CcljrXpnygIAf2IG', NULL, '{\"locale\":\"en\"}', '2019-12-21 08:54:49', '2019-12-21 08:54:49', 'zindabazar,Sylhet', '+8801764562808'),
 (3, 2, 'Forrest Alston', 'rahat3@gmail.com', 'users/default.png', NULL, '$2y$10$fd41coV4XN5e6joWkrNbtuEElhkX05W3S97R/9tQxJOYufi4jBg0W', NULL, NULL, '2020-01-26 19:33:20', '2020-01-26 19:33:20', 'zindabazar,Sylhet', '+8801764562808'),
-(4, 3, 'rahat', 'rahat392@gmail.com', 'users/default.png', NULL, '$2y$10$PTB1hJv6GxxFKDOMf4qrqeO61eqyHFMkY87RtyAznsCMa/ViCVexK', NULL, '{\"locale\":\"en\"}', '2020-01-26 20:39:28', '2020-02-16 07:41:47', 'zindabazar,Sylhet', '+8801764562808'),
+(4, 3, 'rahat', 'rahat396@gmail.com', 'users/default.png', NULL, '$2y$10$PTB1hJv6GxxFKDOMf4qrqeO61eqyHFMkY87RtyAznsCMa/ViCVexK', NULL, '{\"locale\":\"en\"}', '2020-01-26 20:39:28', '2020-02-16 07:41:47', 'zindabazar,Sylhet', '+8801764562808'),
 (5, 1, 'rahat', 'rahat362@gmail.com', 'users/default.png', NULL, '$2y$10$THfu93YSTLc7RFdZ1ohVa.wlU1djNP86IkcTMvlR.8cYdX93tN5BC', NULL, '{\"locale\":\"en\"}', '2020-01-27 04:46:06', '2020-01-27 04:52:33', 'zindabazar,Sylhet', '+8801764562808'),
 (6, 2, 'Kamran Khan', 'kamran392@gmail.com', 'users/default.png', NULL, '$2y$10$DrjnxjEHB8mttaAJjJ/p.O.uXwTgaZCQzQfkqlqYONPtpAAENCvEi', NULL, NULL, '2020-06-09 04:07:32', '2020-06-09 04:07:32', 'zindabazar,Sylhet', '+8801764562808'),
-(7, 2, 'Forrest Alston', 'rahat356@gmail.com', 'users/default.png', NULL, '$2y$10$7mgdIk7.J9LtJ3sLiJ13ouZq93VPn/QdjAD/pKvZzCQxaRIPj8BYS', NULL, NULL, '2020-06-12 00:07:49', '2020-06-12 00:07:50', 'zindabazar,Sylhet', '+8801764562808');
+(7, 2, 'Forrest Alston', 'rahat356@gmail.com', 'users/default.png', NULL, '$2y$10$7mgdIk7.J9LtJ3sLiJ13ouZq93VPn/QdjAD/pKvZzCQxaRIPj8BYS', NULL, NULL, '2020-06-12 00:07:49', '2020-06-12 00:07:50', 'zindabazar,Sylhet', '+8801764562808'),
+(8, 2, 'Forrest Alston', 'rahat5963@gmail.com', 'users/default.png', NULL, '$2y$10$ZUY.x4gYXE9/mTHfr9.tV.Td..NUa/QoPx94Ut97Ik4xbjgqFbrE6', NULL, NULL, '2020-06-21 11:52:27', '2020-06-21 11:52:27', 'zindabazar,Sylhet', '+8801764562808'),
+(9, 2, 'Forrest Alston', 'rahat38964@gmail.com', 'users/default.png', NULL, '$2y$10$2MpqFz5t90HrrkPxY62Uk.KX6A5ECh4NxMkK49h2/uY9qcsElRTEW', NULL, NULL, '2020-06-21 11:54:47', '2020-06-21 11:54:47', 'zindabazar,Sylhet', '+8801764562808'),
+(10, 2, 'Forrest Alston', 'rahat392@gmail.com', 'users/default.png', NULL, '$2y$10$61VjHLzj79Y7qA0uOPYVYOCjvJQf7bwK6GZ4yZ566nsMAJpgFsXLC', NULL, NULL, '2020-06-22 11:07:53', '2020-06-22 11:07:53', 'zindabazar,Sylhet', '+8801764562808'),
+(11, 2, 'Forrest Alston', 'rahat386127@gmail.com', 'users/default.png', NULL, '$2y$10$kyIxsqCMOnQF7yVSqeXcrupW4i9zyVTEH5Bhmh4GZBTyt8hZbSlMy', NULL, NULL, '2020-06-22 11:09:54', '2020-06-22 11:09:54', 'zindabazar,Sylhet', '+8801764562808'),
+(12, 2, 'Forrest Alston', 'rahat3sagfsad@gmail.com', 'users/default.png', NULL, '$2y$10$WZxC/S7BFQGG5frCWpawwuOlbCh8DaihcoBXca3gnW.EaBHchll5K', NULL, NULL, '2020-06-22 11:11:41', '2020-06-22 11:11:41', 'zindabazar,Sylhet', '+8801764562808'),
+(13, 2, 'Forrest Alston', 'rahat3sagfsadgag@gmail.com', 'users/default.png', NULL, '$2y$10$.Oe0xxEr0gbS1oL0JxKmBuMsSMaKKCrz94zjjbTNfv.Tyy3d1Gf8i', NULL, NULL, '2020-06-22 11:16:51', '2020-06-22 11:16:51', 'zindabazar,Sylhet', '+8801764562808'),
+(14, 2, 'Forrest Alston', 'rahatafsdgas3@gmail.com', 'users/default.png', NULL, '$2y$10$UyePsW0RmBUfu7D6WwH5yuYYe7muGXYeGFvnUcerbDhS12bbpny/q', NULL, NULL, '2020-06-22 11:22:36', '2020-06-22 11:22:36', 'zindabazar,Sylhet', '+8801764562808'),
+(15, 2, 'Forrest Alston', 'rahat3uyfu@gmail.com', 'users/default.png', NULL, '$2y$10$WGyhPmCRXBiqHtaQcz3Kp.0jS.kre4hRu.pk77DUuRB6aTLRYiP/.', NULL, NULL, '2020-06-22 11:27:44', '2020-06-22 11:27:44', 'zindabazar,Sylhet', '+8801764562808');
 
 -- --------------------------------------------------------
 
@@ -988,6 +1044,12 @@ CREATE TABLE `user_roles` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `daily_specials`
@@ -1161,6 +1223,12 @@ ALTER TABLE `user_roles`
 --
 
 --
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `daily_specials`
 --
 ALTER TABLE `daily_specials`
@@ -1170,13 +1238,13 @@ ALTER TABLE `daily_specials`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `fc_areas`
@@ -1236,7 +1304,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1248,7 +1316,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -1260,7 +1328,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1284,7 +1352,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
