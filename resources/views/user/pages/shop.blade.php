@@ -75,44 +75,7 @@
                 <!-- .row end -->
                 <div id="shop-all" class="row">
                     <h1 style="margin-left:35%;">Please select a restaurant </h1>
-                  @foreach($foodCategories as $category)
-                      <?php
-                          $food_families = $category->food_families;
-                       ?>
-                       @foreach($food_families as $food_family)
-                          <!-- Product #1 -->
-                          <div class="col-xs-12 col-sm-6 col-md-3 productFilter {{$category->id}}">
-                              <div class="product-item">
-                                  <div class="product--img">
-                                      <img src="{{asset('user/assets/images/shop/grid/1.jpg')}}" alt="Product" />
-                                      <div class="product--hover">
-                                           <div class="product--action">
-                                              <a class="explore" data-toggle="modal" data-target="#myModal" data-food_family_id="{{$food_family->id}}">Explore</a>
-                                          </div>
-                                      </div>
-                                      <!-- .product-overlay end -->
-                                      <div class="divider--shape-1down"></div>
-                                  </div>
-                                  <!-- .product-img end -->
-                                  <div class="product--content">
-                                      <div class="product--type">
-                                          <span>Light</span> - <span>Mexican</span> - <span>Organic</span>
-                                      </div>
-                                      <div class="product--title">
-                                          <h3><a href="#">{{$food_family->name}}</a></h3>
-                                      </div>
-                                      <!-- .product-title end -->
-                                      <div class="product--price">
-                                          <span>Best price: Tk 124.95</span>
-                                      </div>
-                                      <!-- .product-price end -->
-                                  </div>
-                                  <!-- .product-bio end -->
-                              </div>
-                          </div>
-                          <!-- .productFilter end -->
-                       @endforeach
-                  @endforeach
+
                 </div>
                 <!-- .row end -->
 
