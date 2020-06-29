@@ -94,18 +94,31 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
                     $query->orderBy($orderBy, $querySortOrder),
                     $getter,
                 ]);
-                $dataTypeContent = Auth::user()->orders;
+                if (Auth::user()->role_id == 1) {
+                    $dataTypeContent = \App\FcOrders::all();
+                } else{
+                    $dataTypeContent = Auth::user()->orders;
+                }
             } elseif ($model->timestamps) {
-                $dataTypeContent = Auth::user()->orders;
-
-                // dd(Auth::user()->restaurants);
+                
+                
+                if (Auth::user()->role_id == 1) {
+                    $dataTypeContent = \App\FcOrders::all();
+                } else{
+                    $dataTypeContent = Auth::user()->orders;
+                }
+                // dd(Auth::user());
                 // dd(Auth::user()->orders);
                 // dd($dataTypeContent->first());
 
 
             } else {
                 $dataTypeContent = call_user_func([$query->orderBy($model->getKeyName(), 'DESC'), $getter]);
-                $dataTypeContent = Auth::user()->orders;
+                if (Auth::user()->role_id == 1) {
+                    $dataTypeContent = \App\FcOrders::all();
+                } else{
+                    $dataTypeContent = Auth::user()->orders;
+                }
                 // dd($dataTypeContent);
             }
 

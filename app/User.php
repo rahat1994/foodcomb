@@ -44,4 +44,8 @@ class User extends \TCG\Voyager\Models\User
     public function orders(){
       return $this->hasManyThrough('App\FcOrders', 'App\restaurant');
     }
+
+    public function adminOrders(){
+      return \App\FcOrders::all();
+    }
 }
