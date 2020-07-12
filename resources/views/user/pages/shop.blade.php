@@ -75,44 +75,7 @@
                 <!-- .row end -->
                 <div id="shop-all" class="row">
                     <h1 style="margin-left:35%;">Please select a restaurant </h1>
-                  @foreach($foodCategories as $category)
-                      <?php
-                          $food_families = $category->food_families;
-                       ?>
-                       @foreach($food_families as $food_family)
-                          <!-- Product #1 -->
-                          <div class="col-xs-12 col-sm-6 col-md-3 productFilter {{$category->id}}">
-                              <div class="product-item">
-                                  <div class="product--img">
-                                      <img src="{{asset('user/assets/images/shop/grid/1.jpg')}}" alt="Product" />
-                                      <div class="product--hover">
-                                           <div class="product--action">
-                                              <a class="explore" data-toggle="modal" data-target="#myModal" data-food_family_id="{{$food_family->id}}">Explore</a>
-                                          </div>
-                                      </div>
-                                      <!-- .product-overlay end -->
-                                      <div class="divider--shape-1down"></div>
-                                  </div>
-                                  <!-- .product-img end -->
-                                  <div class="product--content">
-                                      <div class="product--type">
-                                          <span>Light</span> - <span>Mexican</span> - <span>Organic</span>
-                                      </div>
-                                      <div class="product--title">
-                                          <h3><a href="#">{{$food_family->name}}</a></h3>
-                                      </div>
-                                      <!-- .product-title end -->
-                                      <div class="product--price">
-                                          <span>Best price: Tk 124.95</span>
-                                      </div>
-                                      <!-- .product-price end -->
-                                  </div>
-                                  <!-- .product-bio end -->
-                              </div>
-                          </div>
-                          <!-- .productFilter end -->
-                       @endforeach
-                  @endforeach
+
                 </div>
                 <!-- .row end -->
 
@@ -231,6 +194,7 @@
 <script type="text/javascript">
     var restaurants = '<?=json_encode($restaurants)?>';
     var already_added = [];
+    var selected_restaurant = [];
     var food_price_list = [];
     var cart_info = {};
 
@@ -253,7 +217,7 @@
             
         });
         
-        if(available_restaurants ===0){
+        if(available_restaurants === 0){
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
@@ -298,11 +262,13 @@
 
                 $.each(data, function(i, value) {
                   var food_type_splitted = value.food_type.split(" - ");
-
+                  var image_link = "<?= url('') ?>"
+                    console.log(image_link+'/'+value.food_image);
+                    
                   list_item += '<div class="col-xs-12 col-sm-6 col-md-3 productFilter '+value.category_id+'">'+
                                       '<div class="product-item">'+
                                           '<div class="product--img">'+
-                                              '<img src="{{asset("user/assets/images/shop/grid/1.jpg")}}" alt="Product" />'+
+                                              '<img src="'+ image_link+'/'+value.food_image +'" alt="Product" />'+
                                               '<div class="product--hover">'+
                                                    '<div class="product--action">'+
                                                       '<a class="add-to-cart" onclick="cart_add_function()" data-food_name="'+value.name+'" data-food_price="'+value.price+'"  data-food_id="'+value.id+'" data-food_restaurant_id="'+value.restaurant_id+'">Add to Cart</a>'+
@@ -352,6 +318,15 @@
       var food_menu_id = $(event.target).data('food_id');
       var food_price = $(event.target).data('food_price');
       var food_name = $(event.target).data('food_name');
+      var food_restaurant_id = $(event.target).data('food_restaurant_id');
+
+        console.log(selected_restaurant.length);
+        
+      if( selected_restaurant.length < 1 || selected_restaurant.includes(food_restaurant_id)){
+        selected_restaurant.push(food_restaurant_id);
+      } else{
+        return;
+      }
 
       var attributes_mushed = food_menu_id + '_' + food_price + '_' + food_name;
       console.log(already_added);
@@ -361,6 +336,26 @@
         already_added.push(attributes_mushed);
         food_price_list.push(food_price);
       }
+
+
+
+      
+
+        // var same_restaurant = true;
+        // console.log(cart_info);
+        
+        // cart_info.map((item,idx) => {
+            
+        //     if (item.food_restaurant_id !== food_restaurant_id) {
+        //     same_restaurant = false;
+        //     }
+        // });
+        // console.log(same_restaurant);
+        // if (!same_restaurant) {
+        //     return; 
+        // }
+      
+
       var id = 'cart_table';
       var food_row = '<tr class="cart-product">'+
                         '<td class="cart-product-item">'+
@@ -387,7 +382,8 @@
           'food_id': food_menu_id,
           'food_name': food_name,
           'food_price': food_price,
-          'quantity':1
+          'quantity':1,
+          'food_restaurant_id':food_restaurant_id
         }
 
         cart_info[food_menu_id] = food_map;
@@ -448,7 +444,6 @@
 
 
       var $all_item_total = $('.single_item_total');
-      console.log(cart_info);
 
       var total_price = 0;
       $.each(cart_info, function(index, value){

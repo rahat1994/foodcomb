@@ -16,6 +16,7 @@ use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
 use Auth;
 use App\User as User;
 use App\restaurant as Restaurant;
+use App\FcOrders as FcOrder;
 class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,11 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
 
     public function index(Request $request)
     {
+        // dd("Hello");
         // GET THE SLUG, ex. 'posts', 'pages', etc.
+        $all_order = FcOrder::all();
+
+        // return view('user/pages/contacts', compact('all_order'));
         $slug = $this->getSlug($request);
 
         // GET THE DataType based on the slug
@@ -89,18 +94,31 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
                     $query->orderBy($orderBy, $querySortOrder),
                     $getter,
                 ]);
-                $dataTypeContent = Auth::user()->orders;
+                if (Auth::user()->role_id == 1) {
+                    $dataTypeContent = \App\FcOrders::all();
+                } else{
+                    $dataTypeContent = Auth::user()->orders;
+                }
             } elseif ($model->timestamps) {
-                $dataTypeContent = Auth::user()->orders;
-
-                // dd(Auth::user()->restaurants);
+                
+                
+                if (Auth::user()->role_id == 1) {
+                    $dataTypeContent = \App\FcOrders::all();
+                } else{
+                    $dataTypeContent = Auth::user()->orders;
+                }
+                // dd(Auth::user());
                 // dd(Auth::user()->orders);
                 // dd($dataTypeContent->first());
 
 
             } else {
                 $dataTypeContent = call_user_func([$query->orderBy($model->getKeyName(), 'DESC'), $getter]);
-                $dataTypeContent = Auth::user()->orders;
+                if (Auth::user()->role_id == 1) {
+                    $dataTypeContent = \App\FcOrders::all();
+                } else{
+                    $dataTypeContent = Auth::user()->orders;
+                }
                 // dd($dataTypeContent);
             }
 

@@ -16,7 +16,7 @@ class productsController extends Controller
     public function foods(Request $request) {
       $areas = AreaModel::all();
       $restaurants = RestaurantModel::all();
-      $foodCategories = []; //FoodCategoryModel::with('food_families')->get();
+      $foodCategories = FoodCategoryModel::with('food_families')->get();
       // dd($foodCategories->food_families);
       // dd(Auth::check());
       $user_loggedin = Auth::check();

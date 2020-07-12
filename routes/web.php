@@ -1,5 +1,6 @@
 <?php
-
+use App\DailySpecial as DailySpecial;
+use App\Review as Review;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -93,7 +94,10 @@ Route::post('/order', 'ShopController@order');
 //static routes
 
 Route::get('/', function () {
-    return view('user/pages/home');
+    $dailySpecials = DailySpecial::all();
+    $reviews = Review::all();
+    // dd($dailySpecials);
+    return view('user/pages/home', compact('dailySpecials', 'reviews'));
 })->name('home');
 
 
@@ -103,24 +107,41 @@ Route::get('about', function () {
 
 
 Route::get('menu', function () {
-    return view('user/pages/menu');
+
+    $default_menu = App\FcDefaultMenu::all();
+    $arr = array();
+
+    foreach ($default_menu as $key => $item) {
+        $arr[$item['item_group']][$key] = $item;
+    }
+    // dd($arr);
+    // dd($default_menu);
+    return view('user/pages/menu', compact('arr'));
 })->name('menu');
 
 
 Route::get('guest', function () {
-    return view('user/pages/guest');
+    $reviews = Review::all();
+
+    $sumRating = 0;
+
+    foreach($reviews as $review){
+
+        $sumRating += $review->star_count;
+    }
+    $avgRating = $sumRating/ count($reviews);
+    // dd($reviews);
+    return view('user/pages/guest', compact('reviews','avgRating'));
 })->name('guest');
 
 
-Route::get('contacts', function () {
-    return view('user/pages/contacts');
-})->name('contacts');
+Route::get('contacts', 'ContactController@index')->name('contacts');
+Route::post('contactSubmit', 'ContactController@save');
+Route::post('reviewSubmit', 'ContactController@review');
 
 
-Route::get('reserve', function () {
-    return view('user/pages/reserve');
-})->name('reserve');
-
+Route::get('reserve', 'ReservationController@index')->name('reserve');
+Route::post('makereservation', 'ReservationController@makereservation');
 
 Route::get('shop', 'productsController@foods')->name('shop');
 

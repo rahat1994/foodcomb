@@ -106,6 +106,8 @@
                                 </thead>
                                 <tbody>
                                     @foreach($dataTypeContent as $data)
+
+                                 
                                     <tr>
                                         @if($showCheckboxColumn)
                                             <td>
@@ -118,9 +120,26 @@
                                                 $data->{$row->field} = $data->{$row->field.'_browse'};
                                             }
                                             @endphp
+                                            <?php
+                                                // dd($row);
+
+                                                if ($row->field == "order_body") {
+                                                    $content_json = json_decode($data->{$row->field});
+                                                    $content_arr = [];
+                                                    // dd($content);
+
+                                                    foreach($content_json as $single_content){
+                                                        $content_arr[] = $single_content->food_name;
+                                                    }
+
+                                                    $content = join(',', $content_arr);
+                                                } else {
+                                                    $content = $data->{$row->field};
+                                                }
+                                            ?>
                                             <td>
                                                 @if (isset($row->details->view))
-                                                    @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $data->{$row->field}, 'action' => 'browse'])
+                                                    @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $content, 'action' => 'browse'])
                                                 @elseif($row->type == 'image')
                                                     <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ Voyager::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
                                                 @elseif($row->type == 'relationship')
@@ -179,7 +198,7 @@
                                                     <span class="badge badge-lg" style="background-color: {{ $data->{$row->field} }}">{{ $data->{$row->field} }}</span>
                                                 @elseif($row->type == 'text')
                                                     @include('voyager::multilingual.input-hidden-bread-browse')
-                                                    <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
+                                                    <div>{{ mb_strlen( $content ) > 200 ? mb_substr($content, 0, 200) . ' ...' : $content }}</div>
                                                 @elseif($row->type == 'text_area')
                                                     @include('voyager::multilingual.input-hidden-bread-browse')
                                                     <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>

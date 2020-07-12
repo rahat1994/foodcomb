@@ -13,4 +13,9 @@ class order extends Model
     {
         return $this->belongsTo('App\User','order_form');
     }
+
+    public function getOrder_bodyBrowseAttribute()
+    {
+        return 'Empty';
+    }
 }

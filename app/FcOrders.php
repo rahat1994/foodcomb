@@ -12,4 +12,9 @@ class FcOrders extends Model
     public function restaurant(){
         return $this->belongsTo('App\restaurant', 'id','restaurant_id');
     }
+
+    public function getOrder_bodyBrowseAttribute()
+    {
+        return 'Empty';
+    }
 }
