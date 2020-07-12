@@ -80,9 +80,9 @@
 <!-- li end -->
 
 <!-- Blog Menu-->
-<!-- <li>
+<li>
 <a class="menu-item" href="{{route('guest')}}" >GuestBook</a>
-</li> -->
+</li>
 <!-- li end -->
 
 

@@ -121,7 +121,17 @@ Route::get('menu', function () {
 
 
 Route::get('guest', function () {
-    return view('user/pages/guest');
+    $reviews = Review::all();
+
+    $sumRating = 0;
+
+    foreach($reviews as $review){
+
+        $sumRating += $review->star_count;
+    }
+    $avgRating = $sumRating/ count($reviews);
+    // dd($reviews);
+    return view('user/pages/guest', compact('reviews','avgRating'));
 })->name('guest');
 
 

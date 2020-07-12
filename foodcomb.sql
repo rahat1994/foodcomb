@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2020 at 08:02 AM
+-- Generation Time: Jul 12, 2020 at 11:21 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -925,7 +925,12 @@ CREATE TABLE `reviews` (
 
 INSERT INTO `reviews` (`id`, `star_count`, `brief`, `image_url`, `customer_name`, `created_at`, `updated_at`) VALUES
 (1, 5, 'gsghaerhaeaetja', NULL, 'Rahat Baksh', '2020-07-11 23:43:34', '2020-07-11 23:43:34'),
-(2, 4, 'This is a small brief.', 'reviews\\July2020\\7SB9IQnIg8OEgFxUwrrn.PNG', 'Rahat Baksh', '2020-07-11 23:55:13', '2020-07-11 23:55:13');
+(2, 2, 'This is a small brief.', 'reviews\\July2020\\7SB9IQnIg8OEgFxUwrrn.PNG', 'Rahat Baksh', '2020-07-11 23:55:00', '2020-07-12 15:00:39'),
+(3, 5, 'I had a great time here.', NULL, 'Kamran', '2020-07-12 15:01:04', '2020-07-12 15:01:04'),
+(4, 4, 'New review', NULL, 'Kamran', '2020-07-12 15:03:10', '2020-07-12 15:03:10'),
+(5, 4, 'New review', NULL, 'Kamran', '2020-07-12 15:03:49', '2020-07-12 15:03:49'),
+(6, 4, 'New review', NULL, 'Kamran', '2020-07-12 15:05:57', '2020-07-12 15:05:57'),
+(7, 4, 'trrstsrisr', 'users/default.png', 'Kamran', '2020-07-12 15:06:35', '2020-07-12 15:06:35');
 
 -- --------------------------------------------------------
 
@@ -1389,7 +1394,7 @@ ALTER TABLE `reservations`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `roles`

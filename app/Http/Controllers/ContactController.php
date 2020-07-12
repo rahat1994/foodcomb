@@ -43,9 +43,19 @@ class ContactController extends Controller
         $newReview->customer_name = $request->customer_name;
         $newReview->star_count = $request->star_count;
         $newReview->brief = $request->brief;
+        $newReview->image_url = $request->image_url;
 
         $newReview->save();
+        $reviews = Review::all();
 
-        return view('user/pages/contacts', compact('newReview'));
+        $sumRating = 0;
+
+        foreach($reviews as $review){
+
+            $sumRating += $review->star_count;
+        }
+        $avgRating = $sumRating/ count($reviews);
+        // dd($avgRating);
+        return view('user/pages/guest', compact('newReview','reviews','avgRating'));
     }
 }
