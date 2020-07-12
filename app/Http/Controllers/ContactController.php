@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contact as Contact;
+use App\Review as Review;
+
 class ContactController extends Controller
 {
     //
@@ -33,5 +35,17 @@ class ContactController extends Controller
         $all_contact = Contact::all();
         print_r($all_contact);
         dd("Hello");
+    }
+
+    function review(Request $request){
+        $newReview = new Review;
+
+        $newReview->customer_name = $request->customer_name;
+        $newReview->star_count = $request->star_count;
+        $newReview->brief = $request->brief;
+
+        $newReview->save();
+
+        return view('user/pages/contacts', compact('newReview'));
     }
 }

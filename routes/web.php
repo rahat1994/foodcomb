@@ -1,5 +1,6 @@
 <?php
 use App\DailySpecial as DailySpecial;
+use App\Review as Review;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -94,8 +95,9 @@ Route::post('/order', 'ShopController@order');
 
 Route::get('/', function () {
     $dailySpecials = DailySpecial::all();
+    $reviews = Review::all();
     // dd($dailySpecials);
-    return view('user/pages/home', compact('dailySpecials'));
+    return view('user/pages/home', compact('dailySpecials', 'reviews'));
 })->name('home');
 
 
@@ -125,6 +127,7 @@ Route::get('guest', function () {
 
 Route::get('contacts', 'ContactController@index')->name('contacts');
 Route::post('contactSubmit', 'ContactController@save');
+Route::post('reviewSubmit', 'ContactController@review');
 
 
 Route::get('reserve', 'ReservationController@index')->name('reserve');
